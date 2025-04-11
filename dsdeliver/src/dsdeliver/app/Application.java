@@ -6,6 +6,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 
 import db.DB;
+import dsdeliver.app.entities.Product;
 
 public class Application {
 	
@@ -17,7 +18,8 @@ public class Application {
 		
 		ResultSet rs = st.executeQuery("select * from tb_product");
 		
-		while (rs.next()) {
+		while (rs.next()) {			
+			
 			System.out.println(rs.getInt("Id") + ", " + rs.getString("Name"));
 		}
 	}
