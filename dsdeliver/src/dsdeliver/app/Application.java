@@ -18,10 +18,20 @@ public class Application {
 		
 		ResultSet rs = st.executeQuery("select * from tb_product");
 		
-		while (rs.next()) {			
-			
-			System.out.println(rs.getInt("Id") + ", " + rs.getString("Name"));
+		while (rs.next()) {	
+			Product p = instantiateProduct(rs);			
+			System.out.println(p);
 		}
+	}
+	
+	private static Product instantiateProduct(ResultSet rs) throws SQLException {
+		Product p = new Product();
+		p.setId(rs.getLong("id"));
+		p.setDescription(rs.getString("description"));
+		p.setName(rs.getString("name"));
+		p.setImgUrl(rs.getString("image_uri"));
+		p.setPrice(rs.getDouble("price"));
+		return p;
 	}
 
 }
